@@ -32,7 +32,13 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'curl -f http://express-backend:3005 || exit 1'
+                sh 'cdocker exec jenkins-ci curl -f http://backend:3005 || exit 1'
+            }
+        }
+
+        stage('Teardown') {
+            steps {
+                sh 'docker-compose down'
             }
         }
 
