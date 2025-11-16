@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   jenkins:
     image: jenkins/jenkins:lts-jdk17
@@ -7,11 +5,12 @@ services:
     user: root            
     container_name: jenkins-ci
     ports:
-      - "8080:8080"    
-      - "50000:50000"
+      - "8080:8080"
     volumes:
       - jenkins_home:/var/jenkins_home        
-      - /var/run/docker.sock:/var/run/docker.sock  
+      - /var/run/docker.sock:/var/run/docker.sock 
+    networks:
+      - app-network-ci  
 
 volumes:
   jenkins_home:

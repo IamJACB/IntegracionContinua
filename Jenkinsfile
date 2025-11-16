@@ -32,7 +32,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'curl -f http://localhost:3005 || exit 1'
+                sh 'curl -f http://backend:3005 || exit 1'
             }
         }
 
