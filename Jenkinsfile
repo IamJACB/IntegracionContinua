@@ -32,11 +32,11 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'cdocker exec jenkins-ci curl -f http://backend:3005 || exit 1'
+                sh 'docker exec jenkins-ci curl -f http://backend:3005 || exit 1'
             }
         }
 
-        stage('Teardown') {
+        stage('Cleanup') {
             steps {
                 sh 'docker-compose down'
             }
